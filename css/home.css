@@ -1,0 +1,1041 @@
+/* Font riêng cho hero title */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap');
+
+/* ============================================================
+   home.css — AuraGate
+   CSS riêng cho trang chủ (index.html)
+   ============================================================ */
+
+/* ── Section chung ────────────────────────────────────────── */
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.section-sub {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.35rem;
+}
+
+.section-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── HERO ─────────────────────────────────────────────────── */
+.hero-section {
+  position: relative;
+  padding: 5rem 0 4rem;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Lưới nền hero */
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(160,100,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(160,100,255,0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 40%, transparent 100%);
+  pointer-events: none;
+}
+
+html.theme-light .hero-grid-bg {
+  background-image:
+    linear-gradient(rgba(124,58,237,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,58,237,0.07) 1px, transparent 1px);
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+/* Tiêu đề hero */
+.hero-text {
+  text-align: center;
+  max-width: 680px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: rgba(160,100,255,0.1);
+  border: 1px solid rgba(160,100,255,0.25);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+}
+
+html.theme-light .hero-badge {
+  background: rgba(124,58,237,0.08);
+  border-color: rgba(124,58,237,0.2);
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: badgePulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes badgePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.7); }
+}
+
+.hero-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin-bottom: 1rem;
+  animation: heroFadeUp 0.6s ease both;
+}
+
+.hero-title .text-gradient {
+  font-style: normal;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+.hero-desc {
+  color: var(--text-muted);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  line-height: 1.7;
+  animation: heroFadeUp 0.6s 0.1s ease both;
+}
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Search box */
+.hero-search-wrap {
+  width: 100%;
+  max-width: 720px;
+  animation: heroFadeUp 0.6s 0.2s ease both;
+}
+
+.hero-search {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px 6px 6px 0;
+  gap: 0;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.hero-search:focus-within {
+  border-color: var(--border-focus);
+  box-shadow: 0 8px 32px rgba(160,100,255,0.15);
+}
+
+html.theme-light .hero-search {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1rem;
+  flex: 1;
+}
+
+.search-keyword { flex: 2; }
+.search-city    { flex: 1; }
+
+.search-icon {
+  color: var(--text-hint);
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.search-input,
+.search-select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.search-input::placeholder { color: var(--text-hint); }
+
+.search-select {
+  cursor: pointer;
+  color: var(--text-muted);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.search-select option {
+  background: var(--bg-card);
+  color: var(--text);
+}
+
+.search-divider {
+  width: 1px;
+  height: 28px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.search-btn {
+  flex-shrink: 0;
+  border-radius: calc(var(--radius) - 4px);
+  padding: 0.65rem 1.25rem;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+
+/* Gợi ý */
+.search-suggestions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+  padding-left: 0.25rem;
+}
+
+.suggestions-label {
+  font-size: 0.8rem;
+  color: var(--text-hint);
+}
+
+.suggestion-tag {
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  transition: color var(--transition), border-color var(--transition),
+              background var(--transition);
+}
+
+.suggestion-tag:hover {
+  color: var(--accent);
+  border-color: rgba(160,100,255,0.4);
+  background: rgba(160,100,255,0.06);
+}
+
+/* Thống kê */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 2rem;
+  animation: heroFadeUp 0.6s 0.3s ease both;
+}
+
+.stat-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.1rem;
+  padding: 0 2rem;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.stat-suffix {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-left: 2px;
+  display: inline;
+}
+
+/* Xếp số và suffix cùng hàng */
+.stat-item {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 2px;
+}
+
+.stat-label {
+  width: 100%;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* ── DANH MỤC ─────────────────────────────────────────────── */
+.categories-section {
+  padding: 0.5rem 0 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.category-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.chip:hover {
+  color: var(--accent);
+  border-color: rgba(160,100,255,0.35);
+  background: rgba(160,100,255,0.06);
+}
+
+.chip-active,
+.chip[aria-pressed="true"] {
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border-color: transparent;
+}
+
+html.theme-light .chip-active,
+html.theme-light .chip[aria-pressed="true"] {
+  color: #fff;
+}
+
+/* ── SỰ KIỆN NỔI BẬT ─────────────────────────────────────── */
+.featured-section {
+  padding: 1rem 0 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.featured-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition), box-shadow var(--transition),
+              border-color var(--transition);
+}
+
+.featured-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(160,100,255,0.3);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.25);
+}
+
+html.theme-light .featured-card:hover {
+  box-shadow: 0 8px 32px rgba(124,58,237,0.12);
+}
+
+/* Ảnh featured card */
+.featured-card-img {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: var(--bg-input);
+}
+
+.featured-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.featured-card:hover .featured-card-img img {
+  transform: scale(1.04);
+}
+
+/* Placeholder khi ảnh lỗi */
+.img-placeholder {
+  background: linear-gradient(135deg, rgba(160,100,255,0.15), rgba(255,79,163,0.1));
+}
+
+.img-placeholder::after {
+  content: '🎭';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  opacity: 0.4;
+}
+
+.card-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.card-badge-hot {
+  background: linear-gradient(135deg, #ff4fa3, #ff6b35);
+  color: #fff;
+}
+
+.card-badge-new {
+  background: linear-gradient(135deg, #a064ff, #4fa3ff);
+  color: #fff;
+}
+
+.card-category-pill {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(10,10,15,0.7);
+  backdrop-filter: blur(8px);
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.9);
+  font-weight: 500;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Body card */
+.featured-card-body {
+  padding: 1.25rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.featured-card-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.featured-card-meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.meta-item svg { flex-shrink: 0; }
+
+.featured-card-location {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.featured-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.featured-card-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.price-from {
+  font-size: 0.78rem;
+  color: var(--text-hint);
+}
+
+.price-value {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-sm {
+  padding: 0.45rem 1rem;
+  font-size: 0.875rem;
+}
+
+/* ── LỊCH SỰ KIỆN ─────────────────────────────────────────── */
+.calendar-section {
+  padding: 1rem 0 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.calendar-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* Lịch tháng */
+.calendar-wrap {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.cal-month-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.cal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-muted);
+  transition: color var(--transition), border-color var(--transition),
+              background var(--transition);
+}
+
+.cal-nav:hover {
+  color: var(--accent);
+  border-color: rgba(160,100,255,0.35);
+  background: rgba(160,100,255,0.06);
+}
+
+.cal-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 0.5rem;
+}
+
+.cal-weekdays span {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-hint);
+  padding: 0.4rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+
+.cal-day {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  position: relative;
+  transition: background var(--transition), color var(--transition),
+              border-color var(--transition);
+  gap: 2px;
+  padding: 2px;
+}
+
+.cal-day:hover:not(.cal-empty):not(.cal-past) {
+  background: rgba(160,100,255,0.08);
+  border-color: rgba(160,100,255,0.2);
+  color: var(--accent);
+}
+
+.cal-day.cal-today {
+  background: rgba(160,100,255,0.1);
+  border-color: rgba(160,100,255,0.3);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.cal-day.cal-selected {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  border-color: transparent;
+  font-weight: 700;
+}
+
+.cal-day.cal-past {
+  color: var(--text-hint);
+  cursor: default;
+}
+
+.cal-day.cal-empty {
+  cursor: default;
+}
+
+/* Chấm sự kiện */
+.cal-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.cal-day.cal-selected .cal-dot {
+  background: rgba(255,255,255,0.8);
+}
+
+/* Sidebar sự kiện */
+.cal-sidebar {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  position: sticky;
+  top: 80px;
+}
+
+.cal-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.cal-sidebar-date {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.cal-event-count {
+  font-size: 0.78rem;
+  color: var(--text-hint);
+  background: rgba(160,100,255,0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  color: var(--accent);
+}
+
+.cal-event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cal-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--text-hint);
+  font-size: 0.875rem;
+}
+
+.cal-empty-state svg { opacity: 0.3; }
+
+.cal-event-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.85rem;
+  background: var(--bg-input);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  transition: border-color var(--transition);
+}
+
+.cal-event-item:hover {
+  border-color: rgba(160,100,255,0.3);
+}
+
+.cal-event-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.cal-event-time {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.cal-event-book {
+  align-self: flex-start;
+  margin-top: 0.35rem;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.78rem;
+  border-radius: var(--radius-sm);
+}
+
+/* ── SẮP DIỄN RA ──────────────────────────────────────────── */
+.upcoming-section {
+  padding: 1rem 0 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.upcoming-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.event-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform var(--transition), border-color var(--transition),
+              box-shadow var(--transition);
+  cursor: pointer;
+}
+
+.event-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(160,100,255,0.25);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+html.theme-light .event-card:hover {
+  box-shadow: 0 4px 16px rgba(124,58,237,0.1);
+}
+
+.event-card-img {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: var(--bg-input);
+  overflow: hidden;
+}
+
+.event-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.event-card:hover .event-card-img img {
+  transform: scale(1.05);
+}
+
+.event-card-cat {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: rgba(10,10,15,0.65);
+  backdrop-filter: blur(6px);
+  color: rgba(255,255,255,0.9);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.event-card-body {
+  padding: 1rem;
+}
+
+.event-card-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.event-card-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.event-card-date {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.event-card-price {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* ── NHÀ TÀI TRỢ ──────────────────────────────────────────── */
+.sponsors-section {
+  padding: 1rem 0 5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.sponsors-header {
+  margin-bottom: 2.5rem;
+}
+
+/* Dải logo cuộn */
+.sponsors-track-wrap {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right, transparent 0%, black 10%, black 90%, transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right, transparent 0%, black 10%, black 90%, transparent 100%
+  );
+}
+
+.sponsors-track {
+  display: flex;
+  animation: sponsorsScroll 28s linear infinite;
+  width: max-content;
+}
+
+.sponsors-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes sponsorsScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.sponsors-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.sponsor-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  min-width: 160px;
+  height: 72px;
+  transition: border-color var(--transition), background var(--transition);
+  flex-shrink: 0;
+}
+
+.sponsor-logo-wrap:hover {
+  border-color: rgba(160,100,255,0.3);
+  background: rgba(160,100,255,0.04);
+}
+
+.sponsor-logo-text {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: -0.01em;
+  transition: color var(--transition);
+  white-space: nowrap;
+}
+
+.sponsor-logo-wrap:hover .sponsor-logo-text {
+  color: var(--accent);
+}
+
+/* ── Light mode overrides cho home ───────────────────────── */
+html.theme-light .featured-card,
+html.theme-light .calendar-wrap,
+html.theme-light .cal-sidebar,
+html.theme-light .event-card,
+html.theme-light .hero-stats,
+html.theme-light .hero-search,
+html.theme-light .sponsor-logo-wrap {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+
+html.theme-light .cal-event-item {
+  background: #f8f6ff;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .upcoming-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section { padding: 3.5rem 0 3rem; }
+
+  .hero-search {
+    flex-direction: column;
+    padding: 0.5rem;
+    gap: 0.25rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .search-divider { display: none; }
+  .search-field { padding: 0.6rem 0.75rem; }
+  .search-keyword, .search-city { flex: none; width: 100%; }
+  .search-btn { width: 100%; justify-content: center; border-radius: var(--radius-sm); }
+
+  .hero-stats {
+    padding: 1rem;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  .stat-item { padding: 0.5rem 1rem; }
+
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .calendar-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cal-sidebar {
+    position: static;
+  }
+
+  .upcoming-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-stats { justify-content: center; }
+  .stat-divider { display: none; }
+  .stat-item { padding: 0.5rem 1.25rem; }
+
+  .category-chips { gap: 0.4rem; }
+  .chip { padding: 0.45rem 0.85rem; font-size: 0.82rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badge-dot,
+  .sponsors-track,
+  .hero-title,
+  .hero-desc,
+  .hero-search-wrap,
+  .hero-stats {
+    animation: none;
+  }
+}
